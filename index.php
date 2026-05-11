@@ -62,6 +62,17 @@ $mysqli->close();
 
 
 <h1>FitTrack</h1>
+<!-- XSS VULNERABIL -->
+<?php
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    echo "<p>Ai căutat: " . $search . "</p>"; // fără htmlspecialchars = vulnerabil
+}
+?>
+<form method="GET">
+    <input type="text" name="search" placeholder="Caută exercițiu...">
+    <button type="submit">Caută</button>
+</form>
 
 <div class="theme-switch">
     <button id="lightBtn">Light</button>
