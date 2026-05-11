@@ -39,26 +39,44 @@ if (isset($_POST['save_profile'])) {
 }
 
 // --- UPLOAD ---
+// if (isset($_POST['upload'])) {
+//     $allowed = ['image/jpeg', 'image/png', 'image/gif'];
+//     $file = $_FILES['profile_pic'];
+
+//     if ($file['error'] !== 0) {
+//         $message = "Eroare la upload.";
+//     } elseif (!in_array($file['type'], $allowed)) {
+//         $message = "Doar JPG, PNG, GIF sunt permise.";
+//     } elseif ($file['size'] > 2 * 1024 * 1024) {
+//         $message = "Fișierul e prea mare (max 2MB).";
+//     } else {
+//         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+//         $filename = 'user_' . $user_id . '.' . $ext;
+//         $destination = 'uploads/' . $filename;
+
+//         $old = glob('uploads/user_' . $user_id . '.*');
+//         foreach ($old as $f) unlink($f);
+
+//         if (move_uploaded_file($file['tmp_name'], $destination)) {
+//             $message = "Poza încărcată cu succes!";
+//         } else {
+//             $message = "Upload eșuat.";
+//         }
+//     }
+// }
+
+//Upload vunerabil
 if (isset($_POST['upload'])) {
-    $allowed = ['image/jpeg', 'image/png', 'image/gif'];
     $file = $_FILES['profile_pic'];
 
     if ($file['error'] !== 0) {
         $message = "Eroare la upload.";
-    } elseif (!in_array($file['type'], $allowed)) {
-        $message = "Doar JPG, PNG, GIF sunt permise.";
-    } elseif ($file['size'] > 2 * 1024 * 1024) {
-        $message = "Fișierul e prea mare (max 2MB).";
     } else {
-        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $filename = 'user_' . $user_id . '.' . $ext;
+        $filename = $file['name']; // păstrează numele original, inclusiv .php
         $destination = 'uploads/' . $filename;
 
-        $old = glob('uploads/user_' . $user_id . '.*');
-        foreach ($old as $f) unlink($f);
-
         if (move_uploaded_file($file['tmp_name'], $destination)) {
-            $message = "Poza încărcată cu succes!";
+            $message = "Fișier încărcat: $filename";
         } else {
             $message = "Upload eșuat.";
         }
