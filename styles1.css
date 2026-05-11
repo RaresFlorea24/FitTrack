@@ -1,0 +1,182 @@
+.menu ul {
+    list-style: none;
+    display: flex;
+    background: #333;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/*fac bordere la table sa arata frumos*/
+table, th, td {
+    border: 1px solid currentColor;
+    border-collapse: collapse;
+}
+
+th {
+    background: rgba(0,0,0,0.05);
+}
+
+
+/*animatii cards*/
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.card {
+    animation: pulse 2s infinite;
+}
+
+
+/*sprites la meniu*/
+.menu a::before {
+    content: "";
+    display: inline-block;
+    width: 46px;
+    height: 44px;
+    background-image: url('img_navsprites.gif');
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+/* dashboard-style 1 */
+.menu li:nth-child(1) a::before {
+    background-position: 0 0;
+    width: 46px;
+}
+
+/* planner-style 3 */
+.menu li:nth-child(2) a::before {
+    background-position: -47px 0;
+    width: 43px;
+}
+
+/* sprites-style 2 */
+.menu li:nth-child(3) a::before {
+    background-position: -91px 0;
+    width: 43px;
+}
+
+/* widgets - style 1 */
+.menu li:nth-child(4) a::before {
+    background-position: 0 0;
+    width: 46px;
+}
+
+/*Pentru hidden si liste colapsabile*/
+
+.hidden{
+    display: none;
+}
+
+.expandable{
+    cursor: pointer;
+    font-weight: bold;
+    margin-block: 10px;
+}
+
+.expandable::before {
+    content: "▶ ";
+}
+
+.expandable.open::before {
+    content: "▼ ";
+}
+
+
+.expandable ul {
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+/*Carusel*/
+#carusel{
+    width: 700px;
+    height: 300px;
+    margin: 20px auto;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#carusel a {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    padding: 12px 20px;
+    border-radius: 10px;
+}
+
+#carusel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    border: none;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/*Dark Mode*/
+.dark{
+    background-color: black;
+    color: white;
+}
+
+#theme-switch button{
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    background: #eee;
+    transition: 0.2s;
+}
+
+.theme-switch {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    display: inline-flex;
+    border: 1px solid #999;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    z-index: 1000;
+}
+
+.theme-switch button:hover {
+    background: #ddd;
+}
+
+.error {
+    border: 2px solid red;
+}

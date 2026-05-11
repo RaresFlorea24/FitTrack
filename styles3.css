@@ -1,0 +1,98 @@
+:root {
+    --main-color: #333;
+    --text-color: white;
+    --border-color: #ccc;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu ul {
+    display: flex;
+    background: var(--main-color);
+    list-style: none;
+    padding: 0;
+}
+
+.menu a {
+    padding: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+table {
+    width: 30%;
+    display: block;
+    overflow-x: auto;
+    border: 1px solid black;
+}
+
+/*resposnive*/
+
+@media (max-width: 768px) {
+    .menu ul {
+        flex-direction: column;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 4px;
+        font-size: 11px;
+    }
+}
+
+
+/*pentru butoane*/
+input[type="submit"], input[type="reset"] {
+    transition: transform 0.3s;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    transform: scale(3);
+}
+
+
+/*iar niste lucruri sa arate mai frumos*/
+input, textarea, select {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    border-color: var(--border-color);
+}
+
+ th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+th.sorted {
+    background-color: #b3d9ff;
+    cursor: pointer;
+}
+
+th {
+    cursor: pointer;
+}
+
+
+
