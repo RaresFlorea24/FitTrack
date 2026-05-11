@@ -12,11 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = trim($_POST['username']);
         $password = $_POST['password'];
 
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-        $stmt->execute([$username]);
-        $user = $stmt->fetch();
+        //Varianta securizata PENTRU SQL INJECTION
+        // $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        // $stmt->execute([$username]);
+        // $user = $stmt->fetch();
 
-        if ($user && password_verify($password, $user['password_hash'])) {
+        //Varianta nesecurizata
+        $query = "SELECT * FROM users WHERE username = '$username'";
+        $user = $pdo->query($query)->fetch();
+
+        //if ($user && password_verify($password, $user['password_hash']))
+        if ($user) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
 
