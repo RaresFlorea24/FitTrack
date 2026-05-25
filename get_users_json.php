@@ -1,10 +1,9 @@
 <?php
 // get_users.php — endpoint AJAX pentru paginare
-// Pune acest fișier în folderul fittrack/ (lângă db.php)
 
 header('Content-Type: application/json');
 
-require_once 'db.php'; // conexiunea ta PDO existentă
+require_once 'db.php'; // conexiunea ta PDO 
 
 $k      = isset($_GET['k'])      ? (int)$_GET['k']      : 5;
 $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
@@ -13,7 +12,7 @@ if ($k < 1)      $k = 5;
 if ($offset < 0) $offset = 0;
 
 try {
-    // Total înregistrări din users
+    // Total înregistrAri din users
     $stmtTotal = $pdo->query("SELECT COUNT(*) FROM users");
     $total = (int)$stmtTotal->fetchColumn();
 

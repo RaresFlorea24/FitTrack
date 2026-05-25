@@ -2,13 +2,13 @@
 session_start();
 require_once 'db.php';
 
-// ── Parametri din URL ─────────────────────────────────────
-$k      = 2;  // înregistrări pe pagină
+// parametri din URL
+$k      = 2;  // inregistrari pe pagina
 $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
 
 if ($offset < 0) $offset = 0;
 
-// ── Interogare ────────────────────────────────────────────
+// interogare baza de date
 $stmtTotal = $pdo->query("SELECT COUNT(*) FROM users");
 $total     = (int)$stmtTotal->fetchColumn();
 
@@ -31,7 +31,7 @@ $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// ── Calcule paginare ──────────────────────────────────────
+// calcule pentru paginare
 $currentPage = (int)floor($offset / $k) + 1;
 $totalPages  = (int)ceil($total / $k);
 $prevOffset  = $offset - $k;
@@ -46,75 +46,21 @@ $isLast  = ($offset + $k >= $total);
   <meta charset="UTF-8">
   <title>Utilizatori — Server-side</title>
   <link rel="stylesheet" href="styles1.css">
-  <style>
-    #paginated-section {
-      margin: 2rem auto;
-      max-width: 960px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1rem;
-    }
-    th, td {
-      padding: 0.55rem 0.9rem;
-      border: 1px solid #ccc;
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    th {
-      background: #e8f5e9;
-      font-weight: bold;
-    }
-    tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-    .pagination-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-    .pagination-controls a,
-    .pagination-controls span.disabled-btn {
-      padding: 0.45rem 1.1rem;
-      border: 1px solid #4caf50;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      text-decoration: none;
-    }
-    .pagination-controls a {
-      background: #4caf50;
-      color: white;
-    }
-    .pagination-controls a:hover {
-      background: #43a047;
-    }
-    .pagination-controls span.disabled-btn {
-      background: #4caf50;
-      color: white;
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
-    .page-info {
-      font-size: 0.88rem;
-      color: #555;
-    }
-  </style>
+  <link rel="stylesheet" href="pagination.css">
 </head>
 <body>
 
   <section id="paginated-section">
-    <h2>Utilizatori înregistrați (server-side)</h2>
+    <h2>Utilizatori inregistrati (server-side)</h2>
 
     <table>
       <thead>
         <tr>
           <th>ID</th>
           <th>Utilizator</th>
-          <th>Data înregistrării</th>
+          <th>Data inregistrarii</th>
           <th>Telefon</th>
-          <th>Vârstă</th>
+          <th>Varsta</th>
           <th>Gen</th>
           <th>Obiectiv</th>
         </tr>

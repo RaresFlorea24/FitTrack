@@ -168,15 +168,7 @@ EXPLOIT:
     Serverul construieste calea: uploads/../db.php
     care se rezolva la: db.php
 
-    Sunt afisate credentialele bazei de date:
-        $host = '127.0.0.1';
-        $user = 'root';
-        $pass = '';
-        $dbname = 'fittrack';
 
-    Se pot accesa si alte fisiere:
-        ?file=../login.php
-        ?file=../register.php
 
 IMPACT:
     - Citirea fisierelor de configurare cu credentiale

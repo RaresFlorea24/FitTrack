@@ -1,0 +1,104 @@
+/* stiluri comune pentru paginile cu paginare */
+
+#paginated-section {
+  margin: 2rem auto;
+  max-width: 960px;
+}
+
+/* tabel pentru versiunile AJAX (json, xml, jquery) */
+#table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+#table-container th,
+#table-container td {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 0.95rem;
+}
+#table-container th {
+  background: #e8f5e9;
+  font-weight: bold;
+}
+#table-container tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* tabel pentru versiunea server-side */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+th, td {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 0.95rem;
+}
+th {
+  background: #e8f5e9;
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* butoanele de navigare (versiunile AJAX) */
+#pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+#pagination-controls button {
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  border: 1px solid #4caf50;
+  background: #4caf50;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+#pagination-controls button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* butoanele de navigare (versiunea server-side) */
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.pagination-controls a,
+.pagination-controls span.disabled-btn {
+  padding: 0.45rem 1.1rem;
+  border: 1px solid #4caf50;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.pagination-controls a {
+  background: #4caf50;
+  color: white;
+}
+.pagination-controls a:hover {
+  background: #43a047;
+}
+.pagination-controls span.disabled-btn {
+  background: #4caf50;
+  color: white;
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* informatii pagina curenta */
+#page-info,
+.page-info {
+  font-size: 0.88rem;
+  color: #555;
+}
