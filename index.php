@@ -66,8 +66,12 @@ $mysqli->close();
 <?php
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
-    echo "<p>Ai căutat: " . $search . "</p>"; // fără htmlspecialchars = vulnerabil
+    //echo "<p>Ai căutat: " . $search . "</p>"; // fără htmlspecialchars = vulnerabil
+    echo "<p>Ai căutat: " . htmlspecialchars($search) . "</p>";
+
 }
+
+
 ?>
 <form method="GET">
     <input type="text" name="search" placeholder="Caută exercițiu...">

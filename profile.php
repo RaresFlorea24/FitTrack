@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+//Securizat CSRF token
+// if (empty($_SESSION['csrf_token'])) {
+//     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+// }
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -16,6 +21,11 @@ $profile = $stmt->fetch();
 
 // Salvare formular
 if (isset($_POST['save_profile'])) {
+    // Verificare Security Token (CSRF)
+    // if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    //     die('CSRF token invalid');
+    // }
+
     $phone = trim($_POST['telefon']);
     $age = intval($_POST['varsta']);
     $gender = $_POST['gen'];
@@ -154,6 +164,7 @@ if ($files) {
 
 <!-- Formularul date personale -->
 <form id="datePersonale" method="POST">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
     <fieldset>
         <legend>Date personale</legend>
 

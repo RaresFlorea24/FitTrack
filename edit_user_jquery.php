@@ -57,7 +57,6 @@ session_start();
   </style>
 </head>
 <body>
-  <?php include 'header.php'; ?>
 
   <section id="edit-section">
     <h2>Editare utilizator (jQuery)</h2>
